@@ -1,4 +1,4 @@
-package com.switchfully.war;
+package com.switchfully.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
