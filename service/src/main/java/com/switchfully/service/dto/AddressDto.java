@@ -1,15 +1,16 @@
 package com.switchfully.service.dto;
 
+
 public class AddressDto {
     private String streetName;
     private String houseNumber;
-    private String zipcode;
+    private String zipCode;
     private String city;
 
-    public AddressDto(String streetName, String houseNumber, String zipcode, String city) {
+    public AddressDto(String streetName, String houseNumber, String zipCode, String city) {
         this.streetName = streetName;
         this.houseNumber = houseNumber;
-        this.zipcode = zipcode;
+        this.zipCode = zipCode;
         this.city = city;
     }
 
@@ -21,8 +22,8 @@ public class AddressDto {
         return houseNumber;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return zipCode;
     }
 
     public String getCity() {

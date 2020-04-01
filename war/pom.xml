@@ -15,6 +15,12 @@
             <groupId>com.switchfully</groupId>
             <artifactId>api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+
+        </dependency>
+        <dependency>
+            <groupId>com.switchfully</groupId>
+            <artifactId>service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

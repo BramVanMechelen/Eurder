@@ -1,17 +1,18 @@
 package com.switchfully.service.dto;
 
+
 public class CustomerDto {
     private String firstName;
     private String lastName;
     private String email;
-    private AddressDto adress;
+    private AddressDto address;
     private String phoneNumber;
 
     public CustomerDto(String firstName, String lastName, String email, AddressDto adress, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.adress = adress;
+        this.address = adress;
         this.phoneNumber = phoneNumber;
     }
 
@@ -27,8 +28,8 @@ public class CustomerDto {
         return email;
     }
 
-    public AddressDto getAdress() {
-        return adress;
+    public AddressDto getAddress() {
+        return address;
     }
 
     public String getPhoneNumber() {
