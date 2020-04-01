@@ -8,7 +8,7 @@ class EurderApplicationTest {
 
     @Test
     void AlwaysTrue(){
-        assertTrue(false);
+        assertTrue(true);
     }
 
 }
