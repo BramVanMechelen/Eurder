@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import com.switchfully.domain.*;
 
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.springframework.http.HttpStatus.ACCEPTED;
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -32,6 +35,15 @@ public class CustomerController {
         customerRepository.registerCustomer(customerToRegister);
         return CustomerMapper.customerToDto(customerToRegister);
     }
+
+    @GetMapping(path = "/all", produces = "application/json")
+    @ResponseStatus(ACCEPTED)
+    public List<CustomerDto> getAllCustomers(){
+        return customerRepository.getCustomerList().stream()
+                .map(CustomerMapper::customerToDto)
+                .collect(Collectors.toList());
+    }
+
 
     @GetMapping(path = "/test", produces = "application/json")
     @ResponseStatus(ACCEPTED)
