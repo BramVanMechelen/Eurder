@@ -11,4 +11,8 @@ public class ItemGroupMapper {
         return new ItemGroup(createItemGroupDto.getName(),createItemGroupDto.getAmount());
     }
 
+    public static CreateItemGroupDto turnItemGroupInToCreateItemGroupDto(ItemGroup itemGroup){
+        return new CreateItemGroupDto(itemGroup.getItemName(), itemGroup.getAmount());
+    }
+
 }

@@ -15,4 +15,12 @@ public class ItemGroup {
   //          this.shippingDate = LocalDate.now().plus(1, ChronoUnit.DAYS);
   //      }
     }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
 }
