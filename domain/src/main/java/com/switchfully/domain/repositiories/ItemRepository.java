@@ -1,4 +1,4 @@
-package com.switchfully.service.repositiories;
+package com.switchfully.domain.repositiories;
 
 
 import com.switchfully.domain.item.Item;
@@ -11,24 +11,24 @@ import java.util.Map;
 @Component
 public class ItemRepository {
 
-    private final Map<String, Item> itemMap;
+    private Map<String, Item> itemRepositoryMap;
 
     @Autowired
     public ItemRepository() {
-        this.itemMap = new LinkedHashMap<>();
+        this.itemRepositoryMap = new LinkedHashMap<>();
     }
 
     public Item addItem(Item item) {
-        itemMap.putIfAbsent(item.getName(), item);
-        return itemMap.get(item.getName());
+        itemRepositoryMap.putIfAbsent(item.getName(), item);
+        return itemRepositoryMap.get(item.getName());
     }
 
     public Map<String, Item> getItemMap() {
-        return itemMap;
+        return itemRepositoryMap;
     }
 
     public Item getItem(String itemName){
-        return itemMap.get(itemName);
+        return itemRepositoryMap.get(itemName);
     }
 
 }

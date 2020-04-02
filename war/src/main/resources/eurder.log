@@ -5081,7 +5081,7 @@ Unconditional classes:
 2020-04-01 14:21:53.136 DEBUG 16436 --- [main] o.s.b.w.s.f.OrderedRequestContextFilter  : Filter 'requestContextFilter' configured for use
 2020-04-01 14:21:53.138 DEBUG 16436 --- [main] s.b.w.s.f.OrderedCharacterEncodingFilter : Filter 'characterEncodingFilter' configured for use
 2020-04-01 14:21:53.138 DEBUG 16436 --- [main] o.s.b.w.s.f.OrderedFormContentFilter     : Filter 'formContentFilter' configured for use
-2020-04-01 14:21:53.203  WARN 16436 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customerController' defined in file [C:\_development\switchfully\Eurder\api\target\classes\com\switchfully\api\CustomerController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.switchfully.service.repositiories.CustomerRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2020-04-01 14:21:53.203  WARN 16436 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customerController' defined in file [C:\_development\switchfully\Eurder\api\target\classes\com\switchfully\api\CustomerController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.switchfully.domain.repositiories.CustomerRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
 2020-04-01 14:21:53.213  INFO 16436 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
 2020-04-01 14:21:53.250 DEBUG 16436 --- [main] .c.l.ClasspathLoggingApplicationListener : Application failed to start with classpath: unknown
 2020-04-01 14:21:53.351 DEBUG 16436 --- [main] ConditionEvaluationReportLoggingListener : 
@@ -5882,7 +5882,7 @@ Unconditional classes:
 
 2020-04-01 14:21:53.916 DEBUG 16436 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : Application failed to start due to an exception
 
-org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.switchfully.service.repositiories.CustomerRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.switchfully.domain.repositiories.CustomerRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1700) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1256) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1210) ~[spring-beans-5.2.5.RELEASE.jar:5.2.5.RELEASE]
@@ -5916,12 +5916,12 @@ APPLICATION FAILED TO START
 
 Description:
 
-Parameter 0 of constructor in com.switchfully.api.CustomerController required a bean of type 'com.switchfully.service.repositiories.CustomerRepository' that could not be found.
+Parameter 0 of constructor in com.switchfully.api.CustomerController required a bean of type 'com.switchfully.domain.repositiories.CustomerRepository' that could not be found.
 
 
 Action:
 
-Consider defining a bean of type 'com.switchfully.service.repositiories.CustomerRepository' in your configuration.
+Consider defining a bean of type 'com.switchfully.domain.repositiories.CustomerRepository' in your configuration.
 
 2020-04-01 14:23:04.232 DEBUG 11464 --- [main] .c.l.ClasspathLoggingApplicationListener : Application started with classpath: unknown
 2020-04-01 14:23:04.522  INFO 11464 --- [main] c.s.application.EurderApplication        : Starting EurderApplication on LAPTOP-KHKDVNEU with PID 11464 (C:\_development\switchfully\Eurder\war\target\classes started by Bramv in C:\_development\switchfully\Eurder)
@@ -20924,7 +20924,7 @@ Unconditional classes:
 2020-04-02 11:07:48.617 DEBUG 3508 --- [main] o.s.boot.SpringApplication               : Loading source class com.switchfully.EurderApplication
 2020-04-02 11:07:48.695 DEBUG 3508 --- [main] o.s.b.c.c.ConfigFileApplicationListener  : Loaded config file 'file:/C:/_development/switchfully/Eurder/war/target/classes/application.properties' (classpath:/application.properties)
 2020-04-02 11:07:48.695 DEBUG 3508 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@26abb146
-2020-04-02 11:07:48.913  WARN 3508 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.switchfully.EurderApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'customerRepository' for bean class [com.switchfully.service.repositiories.CustomerRepository] conflicts with existing, non-compatible bean definition of same name and class [com.switchfully.service.CustomerRepository]
+2020-04-02 11:07:48.913  WARN 3508 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.switchfully.EurderApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'customerRepository' for bean class [com.switchfully.domain.repositiories.CustomerRepository] conflicts with existing, non-compatible bean definition of same name and class [com.switchfully.service.CustomerRepository]
 2020-04-02 11:07:48.929 DEBUG 3508 --- [main] .c.l.ClasspathLoggingApplicationListener : Application failed to start with classpath: unknown
 2020-04-02 11:07:48.945 DEBUG 3508 --- [main] o.s.boot.diagnostics.FailureAnalyzers    : FailureAnalyzer org.springframework.boot.autoconfigure.jdbc.HikariDriverConfigurationFailureAnalyzer@49c6c24f failed
 
@@ -20962,7 +20962,7 @@ Caused by: java.lang.ClassNotFoundException: org.springframework.jdbc.CannotGetJ
 
 2020-04-02 11:07:48.945 ERROR 3508 --- [main] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.switchfully.EurderApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'customerRepository' for bean class [com.switchfully.service.repositiories.CustomerRepository] conflicts with existing, non-compatible bean definition of same name and class [com.switchfully.service.CustomerRepository]
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.switchfully.EurderApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'customerRepository' for bean class [com.switchfully.domain.repositiories.CustomerRepository] conflicts with existing, non-compatible bean definition of same name and class [com.switchfully.service.CustomerRepository]
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:188) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
 	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:319) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
 	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:236) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
@@ -20977,7 +20977,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse 
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.6.RELEASE.jar:2.2.6.RELEASE]
 	at com.switchfully.EurderApplication.main(EurderApplication.java:11) ~[classes/:na]
-Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'customerRepository' for bean class [com.switchfully.service.repositiories.CustomerRepository] conflicts with existing, non-compatible bean definition of same name and class [com.switchfully.service.CustomerRepository]
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'customerRepository' for bean class [com.switchfully.domain.repositiories.CustomerRepository] conflicts with existing, non-compatible bean definition of same name and class [com.switchfully.service.CustomerRepository]
 	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
 	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]
 	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:132) ~[spring-context-5.2.5.RELEASE.jar:5.2.5.RELEASE]

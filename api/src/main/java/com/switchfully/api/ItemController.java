@@ -2,7 +2,7 @@ package com.switchfully.api;
 
 import com.switchfully.service.dto.ItemDto;
 import com.switchfully.service.mapper.ItemMapper;
-import com.switchfully.service.repositiories.ItemRepository;
+import com.switchfully.domain.repositiories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

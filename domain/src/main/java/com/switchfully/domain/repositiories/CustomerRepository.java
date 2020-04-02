@@ -1,4 +1,4 @@
-package com.switchfully.service.repositiories;
+package com.switchfully.domain.repositiories;
 
 import com.switchfully.domain.customer.Customer;
 import org.springframework.beans.factory.annotation.Autowired;

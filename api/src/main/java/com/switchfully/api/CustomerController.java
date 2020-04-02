@@ -1,8 +1,7 @@
 package com.switchfully.api;
 
 
-import com.switchfully.domain.customer.Customer;
-import com.switchfully.service.repositiories.CustomerRepository;
+import com.switchfully.domain.repositiories.CustomerRepository;
 import com.switchfully.service.dto.CustomerDto;
 
 import com.switchfully.service.mapper.CustomerMapper;
