@@ -16,7 +16,7 @@ Using generated security password: 2e30e068-0bbd-4007-831e-bbebb596bda6
 2020-04-01 10:56:40.290 DEBUG 20220 --- [main] .c.l.ClasspathLoggingApplicationListener : Application started with classpath: unknown
 2020-04-01 10:56:40.350  INFO 20220 --- [main] c.s.application.EurderApplication        : Starting EurderApplication on LAPTOP-KHKDVNEU with PID 20220 (C:\_development\switchfully\Eurder\war\target\classes started by Bramv in C:\_development\switchfully\Eurder)
 2020-04-01 10:56:40.351  INFO 20220 --- [main] c.s.application.EurderApplication        : No active profile set, falling back to default profiles: default
-2020-04-01 10:56:40.351 DEBUG 20220 --- [main] o.s.boot.SpringApplication               : Loading source class com.switchfully.application.EurderApplication
+2020-04-01 10:56:40.351 DEBUG 20220 --- [main] o.s.boot.SpringApplication               : Loading source class com.switchfully.EurderApplication
 2020-04-01 10:56:40.385 DEBUG 20220 --- [main] o.s.b.c.c.ConfigFileApplicationListener  : Loaded config file 'file:/C:/_development/switchfully/Eurder/war/target/classes/application.properties' (classpath:/application.properties)
 2020-04-01 10:56:40.385 DEBUG 20220 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4d15107f
 2020-04-01 10:56:41.022 DEBUG 20220 --- [main] .s.b.w.e.t.TomcatServletWebServerFactory : Code archive: C:\Users\Bramv\.m2\repository\org\springframework\boot\spring-boot\2.2.6.RELEASE\spring-boot-2.2.6.RELEASE.jar

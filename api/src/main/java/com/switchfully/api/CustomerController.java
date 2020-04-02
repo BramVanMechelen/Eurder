@@ -1,13 +1,13 @@
 package com.switchfully.api;
 
 
-import com.switchfully.service.CustomerRepository;
+import com.switchfully.domain.customer.Customer;
+import com.switchfully.service.repositiories.CustomerRepository;
 import com.switchfully.service.dto.CustomerDto;
 
 import com.switchfully.service.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.switchfully.domain.*;
 
 
 import java.util.List;
@@ -19,7 +19,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping(path = CustomerController.CUSTOMER_CONTROLLER_RESOURCE_URL)
 public class CustomerController {
-    public static final String CUSTOMER_CONTROLLER_RESOURCE_URL = "/customers";
+    public static final String CUSTOMER_CONTROLLER_RESOURCE_URL = "/customer";
 
     private CustomerRepository customerRepository;
 
@@ -31,12 +31,10 @@ public class CustomerController {
     @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseStatus(CREATED)
     public CustomerDto registerNewCustomer(@RequestBody CustomerDto customerDto){
-        Customer customerToRegister = CustomerMapper.dtoToCustomer(customerDto);
-        customerRepository.registerCustomer(customerToRegister);
-        return CustomerMapper.customerToDto(customerToRegister);
+        return CustomerMapper.customerToDto(customerRepository.registerCustomer(CustomerMapper.dtoToCustomer(customerDto)));
     }
 
-    @GetMapping(path = "/all", produces = "application/json")
+    @GetMapping( produces = "application/json")
     @ResponseStatus(ACCEPTED)
     public List<CustomerDto> getAllCustomers(){
         return customerRepository.getCustomerList().stream()

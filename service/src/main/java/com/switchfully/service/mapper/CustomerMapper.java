@@ -1,6 +1,6 @@
 package com.switchfully.service.mapper;
 
-import com.switchfully.domain.Customer;
+import com.switchfully.domain.customer.Customer;
 import com.switchfully.service.dto.CustomerDto;
 import org.springframework.stereotype.Component;
 

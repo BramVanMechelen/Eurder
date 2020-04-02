@@ -1,4 +1,4 @@
-package com.switchfully.domain;
+package com.switchfully.domain.customer;
 
 public class Address {
     private String streetName;
