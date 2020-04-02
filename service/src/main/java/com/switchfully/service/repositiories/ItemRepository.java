@@ -27,4 +27,8 @@ public class ItemRepository {
         return itemMap;
     }
 
+    public Item getItem(String itemName){
+        return itemMap.get(itemName);
+    }
+
 }
