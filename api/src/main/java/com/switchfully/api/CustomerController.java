@@ -1,6 +1,7 @@
 package com.switchfully.api;
 
 
+import com.switchfully.service.CustomerRepository;
 import com.switchfully.service.dto.CustomerDto;
 
 import com.switchfully.service.mapper.CustomerMapper;
@@ -20,7 +21,6 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class CustomerController {
     public static final String CUSTOMER_CONTROLLER_RESOURCE_URL = "/customers";
 
-    private CustomerController customerController;
     private CustomerRepository customerRepository;
 
     @Autowired

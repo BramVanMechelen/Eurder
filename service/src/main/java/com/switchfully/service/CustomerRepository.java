@@ -1,5 +1,6 @@
-package com.switchfully.domain;
+package com.switchfully.service;
 
+import com.switchfully.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
