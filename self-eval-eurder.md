@@ -41,14 +41,14 @@ Which choices did you make? (List your choices below, remove what is not relevan
 ## Story 1
  - [x] The functional requirements are implemented
  - [x] The requirements are tested with Postman
- - [ ] The requirements are unit tested
+ - [x] The requirements are unit tested
  - [ ] The requirements are integration tested
  - [ ] Proper logging is setup
  - [ ] I did a "codereview" of my own code before declaring it "done".
 ### Comments:
 ## Story 2
- - [ ] The functional requirements are implemented
- - [ ] The requirements are tested with Postman
+ - [x] The functional requirements are implemented
+ - [x] The requirements are tested with Postman
  - [ ] The requirements are unit tested
  - [ ] The requirements are integration tested
  - [ ] Proper logging is setup

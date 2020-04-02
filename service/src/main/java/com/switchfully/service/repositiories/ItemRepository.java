@@ -18,8 +18,9 @@ public class ItemRepository {
         this.itemMap = new LinkedHashMap<>();
     }
 
-    public void addItem(Item item) {
-        itemMap.put(item.getName(), item);
+    public Item addItem(Item item) {
+        itemMap.putIfAbsent(item.getName(), item);
+        return itemMap.get(item.getName());
     }
 
     public Map<String, Item> getItemMap() {
