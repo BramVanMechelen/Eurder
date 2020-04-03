@@ -28,4 +28,9 @@ public class Item {
     public int getAmount() {
         return amount;
     }
+
+    public Item setAmount(int amount) {
+        this.amount = amount;
+        return this;
+    }
 }

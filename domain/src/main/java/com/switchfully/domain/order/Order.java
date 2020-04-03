@@ -1,10 +1,11 @@
 package com.switchfully.domain.order;
 
+import com.switchfully.domain.item.Item;
 import com.switchfully.domain.item.ItemGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Order {
     private int orderNumber;
@@ -16,30 +17,19 @@ public class Order {
         this.itemGroupList = itemGroupList;
     }
 
-    public void mergeDuplicates(){
-        List<ItemGroup> newItemGroupList = new ArrayList<>();
-
-        for (ItemGroup itemGroup1: itemGroupList){
-            for(ItemGroup itemGroup2: itemGroupList){
-                if(itemGroup1.getItemName().equals(itemGroup2.getItemName())){
-                    itemGroup1.setAmount(itemGroup1.getAmount() + itemGroup2.getAmount());
-
-                }
+    public void mergeSameItemGroups(){
+        List<ItemGroup> mergedList = new ArrayList<>();
+        for (ItemGroup itemGroup : itemGroupList) {
+            int index = mergedList.indexOf(itemGroup);
+            if (index != -1) {
+                mergedList.set(index, mergedList.get(index).merge(itemGroup));
+            } else {
+                mergedList.add(itemGroup);
             }
         }
-
-
-
-        List<ItemGroup> list = itemGroupList;
-        for (ItemGroup itemGroup1 : itemGroupList) {
-            for (ItemGroup itemGroup2 : list) {
-                if (itemGroup1.getItemName().equalsIgnoreCase(itemGroup2.getItemName()))  {
-                    itemGroup2.setAmount(itemGroup1.getAmount() + itemGroup2.getAmount());
-                    itemGroupList.remove(itemGroup1);
-                }
-            }
-        }
+        itemGroupList = mergedList;
     }
+
 
     public void addItemToOrder(String name, int amount){
         ItemGroup itemGroup = new ItemGroup(name, amount);

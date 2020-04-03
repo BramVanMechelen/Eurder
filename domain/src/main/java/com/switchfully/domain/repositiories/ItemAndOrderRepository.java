@@ -7,7 +7,6 @@ import com.switchfully.domain.order.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.swing.border.Border;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -47,6 +46,7 @@ public class ItemAndOrderRepository {
                 itemGroup.setShippingDate(LocalDate.now().plus(7, ChronoUnit.DAYS));
             } else {
                 itemGroup.setShippingDate(LocalDate.now());
+                itemRepositoryMap.get(itemGroup.getItemName()).setAmount(itemRepositoryMap.get(itemGroup.getItemName()).getAmount() - itemGroup.getAmount());
             }
         }
         return order;
@@ -54,12 +54,13 @@ public class ItemAndOrderRepository {
 
     public Order addOrder(Order order) {
         if (isItemInItemRepoMap(order)){
-        //    order.mergeDuplicates();
+            order.mergeSameItemGroups();
             orderList.add(updateShippingDates(order));
-            return updateShippingDates(order);
+            return order;
         }
         return null;
     }
+
 
     public List<Order> getOrderList() {
         return orderList;
