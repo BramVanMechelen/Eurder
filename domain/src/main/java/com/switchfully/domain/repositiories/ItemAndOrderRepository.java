@@ -54,10 +54,11 @@ public class ItemAndOrderRepository {
 
     public Order addOrder(Order order) {
         if (isItemInItemRepoMap(order)){
-            orderList.add((updateShippingDates(order)));
+        //    order.mergeDuplicates();
+            orderList.add(updateShippingDates(order));
             return updateShippingDates(order);
         }
-        throw new IllegalArgumentException("You cannot order something that we do not have");
+        return null;
     }
 
     public List<Order> getOrderList() {

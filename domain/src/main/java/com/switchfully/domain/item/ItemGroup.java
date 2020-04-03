@@ -29,4 +29,9 @@ public class ItemGroup {
     public LocalDate getShippingDate() {
         return shippingDate;
     }
+
+    public ItemGroup setAmount(int amount) {
+        this.amount = amount;
+        return this;
+    }
 }
