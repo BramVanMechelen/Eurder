@@ -22,22 +22,19 @@ public class OrderController {
     private ItemAndOrderRepository itemAndOrderRepository;
 
     @Autowired
-    public OrderController(ItemAndOrderRepository itemAndOrderRepository){this.itemAndOrderRepository = itemAndOrderRepository;}
+    public OrderController(ItemAndOrderRepository itemAndOrderRepository) {
+        this.itemAndOrderRepository = itemAndOrderRepository;
+    }
 
     @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseStatus(CREATED)
-    public OrderDto addNewOrder(@RequestBody CreateOrderDto createOrderDto){
-        return OrderMapper.turnOrderInOrderDto(
-                itemAndOrderRepository.addOrder(
-                OrderMapper.turnCreateOrderDtoInOrder(createOrderDto)));
-
+    public OrderDto addNewOrder(@RequestBody CreateOrderDto createOrderDto) {
+        return OrderMapper.turnOrderInOrderDto(itemAndOrderRepository.addOrder(OrderMapper.turnCreateOrderDtoInOrder(createOrderDto)));
     }
 
-    @GetMapping( produces = "application/json")
+    @GetMapping(produces = "application/json")
     @ResponseStatus(ACCEPTED)
-    public List<OrderDto> getAllOrders(){
-        return itemAndOrderRepository.getOrderList().stream()
-                .map(OrderMapper::turnOrderInOrderDto)
-                .collect(Collectors.toList());
+    public List<OrderDto> getAllOrders() {
+        return itemAndOrderRepository.getOrderList().stream().map(OrderMapper::turnOrderInOrderDto).collect(Collectors.toList());
     }
 }

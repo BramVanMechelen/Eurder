@@ -5,10 +5,10 @@ import java.util.List;
 
 public class OrderDto {
     private int orderNumber;
-    private List<CreateItemGroupDto> itemGroupList;
+    private List<ItemGroupDto> itemGroupList;
 
 
-  public OrderDto(int orderNumber, List<CreateItemGroupDto> itemGroupList) {
+  public OrderDto(int orderNumber, List<ItemGroupDto> itemGroupList) {
       this.orderNumber = orderNumber;
         this.itemGroupList = itemGroupList;
     }
@@ -17,7 +17,7 @@ public class OrderDto {
         return orderNumber;
     }
 
-    public List<CreateItemGroupDto> getItemGroupList() {
+    public List<ItemGroupDto> getItemGroupList() {
         return itemGroupList;
     }
 }

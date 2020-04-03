@@ -2,10 +2,14 @@ package com.switchfully.domain.repositiories;
 
 
 import com.switchfully.domain.item.Item;
+import com.switchfully.domain.item.ItemGroup;
 import com.switchfully.domain.order.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.border.Border;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,7 +19,7 @@ import java.util.Map;
 public class ItemAndOrderRepository {
 
     private Map<String, Item> itemRepositoryMap;
-    private final List<Order> orderList;
+    private List<Order> orderList;
 
     @Autowired
     public ItemAndOrderRepository() {
@@ -28,9 +32,32 @@ public class ItemAndOrderRepository {
         return itemRepositoryMap.get(item.getName());
     }
 
-    public Order addOrder(Order order) {
-        orderList.add(order);
+    public boolean isItemInItemRepoMap(Order order) {
+        for (ItemGroup itemGroup : order.getItemGroupList()) {
+            if (!itemRepositoryMap.containsKey(itemGroup.getItemName())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Order updateShippingDates(Order order){
+        for(ItemGroup itemGroup :order.getItemGroupList()){
+            if (itemRepositoryMap.get(itemGroup.getItemName()).getAmount() < itemGroup.getAmount()){
+                itemGroup.setShippingDate(LocalDate.now().plus(7, ChronoUnit.DAYS));
+            } else {
+                itemGroup.setShippingDate(LocalDate.now());
+            }
+        }
         return order;
+    }
+
+    public Order addOrder(Order order) {
+        if (isItemInItemRepoMap(order)){
+            orderList.add((updateShippingDates(order)));
+            return updateShippingDates(order);
+        }
+        throw new IllegalArgumentException("You cannot order something that we do not have");
     }
 
     public List<Order> getOrderList() {
@@ -41,7 +68,7 @@ public class ItemAndOrderRepository {
         return itemRepositoryMap;
     }
 
-    public Item getItem(String itemName){
+    public Item getItem(String itemName) {
         return itemRepositoryMap.get(itemName);
     }
 

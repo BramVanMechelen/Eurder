@@ -11,9 +11,7 @@ public class ItemGroup {
     public ItemGroup(String itemName, int amount) {
         this.itemName = itemName;
         this.amount = amount;
-  //      if (amountInStock < amount) {
-  //          this.shippingDate = LocalDate.now().plus(1, ChronoUnit.DAYS);
-  //      }
+        this.shippingDate = LocalDate.now().plus(5, ChronoUnit.YEARS);
     }
 
     public String getItemName() {
@@ -22,5 +20,13 @@ public class ItemGroup {
 
     public int getAmount() {
         return amount;
+    }
+
+    public void setShippingDate(LocalDate shippingDate) {
+        this.shippingDate = shippingDate;
+    }
+
+    public LocalDate getShippingDate() {
+        return shippingDate;
     }
 }
