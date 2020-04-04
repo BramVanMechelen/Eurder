@@ -3,7 +3,7 @@ package com.switchfully.domain.item;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
-import static com.switchfully.domain.repositiories.ItemAndOrderRepository.*;
+import static com.switchfully.domain.repositiories.ItemRepository.*;
 
 public class ItemGroup {
     private String itemName;

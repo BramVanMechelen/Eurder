@@ -2,7 +2,7 @@ package com.switchfully.api;
 
 import com.switchfully.service.dto.ItemDto;
 import com.switchfully.service.mapper.ItemMapper;
-import com.switchfully.domain.repositiories.ItemAndOrderRepository;
+import com.switchfully.domain.repositiories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,29 +17,29 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class ItemController {
     public static final String ITEM_CONTROLLER_RESOURCE_URL = "/item";
 
-    private ItemAndOrderRepository itemAndOrderRepository;
+    private ItemRepository itemRepository;
 
     @Autowired
-    public ItemController(ItemAndOrderRepository itemAndOrderRepository) {
-        this.itemAndOrderRepository = itemAndOrderRepository;
+    public ItemController(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseStatus(CREATED)
     public ItemDto addNewItem(@RequestBody ItemDto itemDto){
-        return ItemMapper.itemToDto(itemAndOrderRepository.addItem(ItemMapper.dtoToItem(itemDto)));
+        return ItemMapper.itemToDto(itemRepository.addItem(ItemMapper.dtoToItem(itemDto)));
     }
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(ACCEPTED)
     public List<ItemDto> getAllItems(){
-        return itemAndOrderRepository.getItemsMap().values().stream().map(ItemMapper::itemToDto).collect(Collectors.toList());
+        return ItemRepository.getItemsMap().values().stream().map(ItemMapper::itemToDto).collect(Collectors.toList());
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(ACCEPTED)
     public ItemDto getItemById(@PathVariable String id){
-        return ItemMapper.itemToDto(itemAndOrderRepository.getItem(id));
+        return ItemMapper.itemToDto(itemRepository.getItem(id));
     }
 
 }
