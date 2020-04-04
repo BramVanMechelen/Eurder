@@ -1,10 +1,9 @@
 package com.switchfully.domain.item;
 
-import com.switchfully.domain.repositiories.ItemAndOrderRepository;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
+import static com.switchfully.domain.repositiories.ItemAndOrderRepository.*;
 
 public class ItemGroup {
     private String itemName;
@@ -16,7 +15,9 @@ public class ItemGroup {
         this.itemName = itemName;
         this.amount = amount;
         this.shippingDate = LocalDate.now().plus(5, ChronoUnit.YEARS);
-        this.price = ItemAndOrderRepository.getItemMap().get(itemName).getPrice() * amount;
+        if (getItemsMap().get(itemName) != null) {
+            this.price = getItemsMap().get(itemName).getPrice() * amount;
+        }
     }
 
     public String getItemName() {
@@ -39,8 +40,12 @@ public class ItemGroup {
         return price;
     }
 
-    public ItemGroup merge(ItemGroup other){
-        assert(this.equals(other));
+    public void removeFromStock(){
+        getItemsMap().get(getItemName()).setAmount(getItemsMap().get(getItemName()).getAmount() - getAmount());
+    }
+
+    public ItemGroup merge(ItemGroup other) {
+        assert (this.equals(other));
         return new ItemGroup(this.itemName, this.amount + other.getAmount());
     }
 

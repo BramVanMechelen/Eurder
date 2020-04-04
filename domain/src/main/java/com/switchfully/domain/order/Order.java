@@ -1,8 +1,10 @@
 package com.switchfully.domain.order;
 
-import com.switchfully.domain.item.Item;
 import com.switchfully.domain.item.ItemGroup;
+import com.switchfully.domain.repositiories.ItemAndOrderRepository;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,5 +57,26 @@ public class Order {
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public boolean isItemInItemRepoMap() {
+        for (ItemGroup itemGroup : getItemGroupList()) {
+            if (!ItemAndOrderRepository.getItemsMap().containsKey(itemGroup.getItemName())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Order updateShippingDates(ItemAndOrderRepository itemAndOrderRepository){
+        for(ItemGroup itemGroup : getItemGroupList()){
+            if (ItemAndOrderRepository.getItemsMap().get(itemGroup.getItemName()).getAmount() < itemGroup.getAmount()){
+                itemGroup.setShippingDate(LocalDate.now().plus(7, ChronoUnit.DAYS));
+            } else {
+                itemGroup.setShippingDate(LocalDate.now());
+                itemGroup.removeFromStock();
+            }
+        }
+        return this;
     }
 }

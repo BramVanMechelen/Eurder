@@ -1,6 +1,5 @@
 package com.switchfully.api;
 
-import com.switchfully.domain.item.Item;
 import com.switchfully.service.dto.ItemDto;
 import com.switchfully.service.mapper.ItemMapper;
 import com.switchfully.domain.repositiories.ItemAndOrderRepository;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
@@ -35,7 +33,7 @@ public class ItemController {
     @GetMapping(produces = "application/json")
     @ResponseStatus(ACCEPTED)
     public List<ItemDto> getAllItems(){
-        return itemAndOrderRepository.getItemMap().values().stream().map(ItemMapper::itemToDto).collect(Collectors.toList());
+        return itemAndOrderRepository.getItemsMap().values().stream().map(ItemMapper::itemToDto).collect(Collectors.toList());
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")

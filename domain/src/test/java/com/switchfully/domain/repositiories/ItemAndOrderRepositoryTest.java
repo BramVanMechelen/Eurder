@@ -26,7 +26,7 @@ class ItemAndOrderRepositoryTest {
     void CheckIfOrderedItemExistsInItemMap(){
         itemGroupListWithApplesAndPears.add(itemGroupApples);
         itemAndOrderRepository.addItem(apple);
-        assertTrue(itemAndOrderRepository.isItemInItemRepoMap(new Order(itemGroupListWithApplesAndPears)));
+        assertTrue(new Order(itemGroupListWithApplesAndPears).isItemInItemRepoMap());
     }
 
     @Test
@@ -34,7 +34,7 @@ class ItemAndOrderRepositoryTest {
         itemGroupListWithApplesAndPears.add(itemGroupApples);
         itemAndOrderRepository.addItem(apple);
         Order orderOfApples = new Order(itemGroupListWithApplesAndPears);
-        Order orderOfApplesWithCorrectShippingDate = itemAndOrderRepository.updateShippingDates(orderOfApples);
+        Order orderOfApplesWithCorrectShippingDate = orderOfApples.updateShippingDates(itemAndOrderRepository);
         int indexOfItemGroupApples = orderOfApples.getItemGroupList().indexOf(itemGroupApples);
         assertEquals(orderOfApplesWithCorrectShippingDate.getItemGroupList().get(indexOfItemGroupApples).getShippingDate(), LocalDate.now());
     }
@@ -46,7 +46,7 @@ class ItemAndOrderRepositoryTest {
         itemAndOrderRepository.addItem(apple);
         itemAndOrderRepository.addItem(pear);
         Order orderOfPears = new Order(itemGroupListWithApplesAndPears);
-        Order orderOfPearsWithCorrectShippingDate = itemAndOrderRepository.updateShippingDates(orderOfPears);
+        Order orderOfPearsWithCorrectShippingDate = orderOfPears.updateShippingDates(itemAndOrderRepository);
         int indexOfItemGroupApples = orderOfPears.getItemGroupList().indexOf(itemGroupPears);
         assertEquals(orderOfPearsWithCorrectShippingDate.getItemGroupList().get(indexOfItemGroupApples).getShippingDate(), LocalDate.now().plus(7, ChronoUnit.DAYS));
     }
