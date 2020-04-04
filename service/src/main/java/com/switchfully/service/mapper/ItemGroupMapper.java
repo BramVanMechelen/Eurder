@@ -13,7 +13,6 @@ public class ItemGroupMapper {
     }
 
     public static ItemGroupDto turnItemGroupInToItemGroupDto(ItemGroup itemGroup){
-        return new ItemGroupDto(itemGroup.getItemName(), itemGroup.getAmount(), itemGroup.getShippingDate().toString());
+        return new ItemGroupDto(itemGroup.getItemName(), itemGroup.getAmount(), itemGroup.getShippingDate().toString(), itemGroup.getPrice());
     }
-
 }

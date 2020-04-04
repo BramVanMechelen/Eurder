@@ -29,8 +29,8 @@ public class Item {
         return amount;
     }
 
-    public Item setAmount(int amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
-        return this;
+
     }
 }

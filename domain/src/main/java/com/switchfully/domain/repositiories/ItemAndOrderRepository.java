@@ -17,12 +17,11 @@ import java.util.Map;
 @Component
 public class ItemAndOrderRepository {
 
-    private Map<String, Item> itemRepositoryMap;
+    private static Map<String, Item> itemRepositoryMap = new LinkedHashMap<>();
     private List<Order> orderList;
 
     @Autowired
     public ItemAndOrderRepository() {
-        this.itemRepositoryMap = new LinkedHashMap<>();
         this.orderList = new ArrayList<>();
     }
 
@@ -40,18 +39,6 @@ public class ItemAndOrderRepository {
         return true;
     }
 
-    public Order updateShippingDates(Order order){
-        for(ItemGroup itemGroup :order.getItemGroupList()){
-            if (itemRepositoryMap.get(itemGroup.getItemName()).getAmount() < itemGroup.getAmount()){
-                itemGroup.setShippingDate(LocalDate.now().plus(7, ChronoUnit.DAYS));
-            } else {
-                itemGroup.setShippingDate(LocalDate.now());
-                itemRepositoryMap.get(itemGroup.getItemName()).setAmount(itemRepositoryMap.get(itemGroup.getItemName()).getAmount() - itemGroup.getAmount());
-            }
-        }
-        return order;
-    }
-
     public Order addOrder(Order order) {
         if (isItemInItemRepoMap(order)){
             order.mergeSameItemGroups();
@@ -62,11 +49,29 @@ public class ItemAndOrderRepository {
     }
 
 
+
+    public Order updateShippingDates(Order order){
+        for(ItemGroup itemGroup :order.getItemGroupList()){
+            if (itemRepositoryMap.get(itemGroup.getItemName()).getAmount() < itemGroup.getAmount()){
+                itemGroup.setShippingDate(LocalDate.now().plus(7, ChronoUnit.DAYS));
+            } else {
+                itemGroup.setShippingDate(LocalDate.now());
+                removeFromStock(itemGroup);
+            }
+        }
+        return order;
+    }
+
+    public void removeFromStock(ItemGroup itemGroup){
+        itemRepositoryMap.get(itemGroup.getItemName()).setAmount(itemRepositoryMap.get(itemGroup.getItemName()).getAmount() - itemGroup.getAmount());
+    }
+
+
     public List<Order> getOrderList() {
         return orderList;
     }
 
-    public Map<String, Item> getItemMap() {
+    public static Map<String, Item> getItemMap() {
         return itemRepositoryMap;
     }
 

@@ -11,10 +11,20 @@ public class Order {
     private int orderNumber;
     private List<ItemGroup> itemGroupList;
     private static int orderCounter = 0;
+    private double totalPrice;
 
     public Order(List<ItemGroup> itemGroupList) {
         this.orderNumber = ++orderCounter;
         this.itemGroupList = itemGroupList;
+        this.totalPrice = getTotalPriceOfItemGroupList(itemGroupList);
+    }
+
+    public double getTotalPriceOfItemGroupList(List<ItemGroup> itemGroupList){
+        double totalPrice = 0;
+        for (ItemGroup itemGroup: itemGroupList){
+            totalPrice = totalPrice + itemGroup.getPrice();
+        }
+        return totalPrice;
     }
 
     public void mergeSameItemGroups(){
@@ -30,7 +40,6 @@ public class Order {
         itemGroupList = mergedList;
     }
 
-
     public void addItemToOrder(String name, int amount){
         ItemGroup itemGroup = new ItemGroup(name, amount);
         itemGroupList.add(itemGroup);
@@ -44,5 +53,7 @@ public class Order {
         return orderNumber;
     }
 
-
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 }

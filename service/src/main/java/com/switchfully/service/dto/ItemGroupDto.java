@@ -6,12 +6,14 @@ public class ItemGroupDto {
     private String name;
     private int amount;
     private String shippingDate;
+    private double price;
 
 
-    public ItemGroupDto(String name, int amount, String shippingDate) {
+    public ItemGroupDto(String name, int amount, String shippingDate, double price) {
         this.name = name;
         this.amount = amount;
         this.shippingDate = shippingDate;
+        this.price = price;
     }
 
     public String getName() {
@@ -24,5 +26,9 @@ public class ItemGroupDto {
 
     public String getShippingDate() {
        return shippingDate;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }

@@ -1,6 +1,5 @@
 package com.switchfully.service.mapper;
 
-import com.switchfully.domain.item.ItemGroup;
 import com.switchfully.domain.order.Order;
 import com.switchfully.service.dto.CreateOrderDto;
 import com.switchfully.service.dto.ItemGroupDto;
@@ -22,11 +21,9 @@ public class OrderMapper {
     }
 
     public static OrderDto turnOrderInOrderDto(Order order) {
-        List<ItemGroupDto> list = new ArrayList<>();
-        for (ItemGroup itemGroup : order.getItemGroupList()) {
-            ItemGroupDto itemGroupDto = ItemGroupMapper.turnItemGroupInToItemGroupDto(itemGroup);
-            list.add(itemGroupDto);
-        }
-        return new OrderDto(order.getOrderNumber(), list);
+        List<ItemGroupDto> list = order.getItemGroupList().stream()
+                .map(ItemGroupMapper::turnItemGroupInToItemGroupDto)
+                .collect(Collectors.toList());
+        return new OrderDto(order.getOrderNumber(), list, order.getTotalPrice());
     }
 }
