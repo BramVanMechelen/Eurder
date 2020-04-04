@@ -1,9 +1,9 @@
 package com.switchfully.service.mapper;
 
 import com.switchfully.domain.order.Order;
-import com.switchfully.service.dto.CreateOrderDto;
-import com.switchfully.service.dto.ItemGroupDto;
-import com.switchfully.service.dto.OrderDto;
+import com.switchfully.service.dto.orderdto.CreateOrderDto;
+import com.switchfully.service.dto.orderdto.ItemGroupDto;
+import com.switchfully.service.dto.orderdto.OrderDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

@@ -1,4 +1,6 @@
-package com.switchfully.service.dto;
+package com.switchfully.service.dto.orderdto;
+
+import com.switchfully.service.dto.orderdto.CreateItemGroupDto;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
-package com.switchfully.service.dto;
+package com.switchfully.service.dto.customerdto;
 
+
+import com.switchfully.service.dto.customerdto.AddressDto;
 
 public class CustomerDto {
     private String firstName;

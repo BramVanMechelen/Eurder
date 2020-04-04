@@ -1,12 +1,10 @@
 package com.switchfully.api;
 
 
-import com.switchfully.domain.repositiories.ItemRepository;
 import com.switchfully.domain.repositiories.OrderRepository;
-import com.switchfully.service.dto.CreateOrderDto;
-import com.switchfully.service.dto.OrderDto;
+import com.switchfully.service.dto.orderdto.CreateOrderDto;
+import com.switchfully.service.dto.orderdto.OrderDto;
 import com.switchfully.service.mapper.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

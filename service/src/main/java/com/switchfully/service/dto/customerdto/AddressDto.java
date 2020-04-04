@@ -1,4 +1,4 @@
-package com.switchfully.service.dto;
+package com.switchfully.service.dto.customerdto;
 
 
 public class AddressDto {

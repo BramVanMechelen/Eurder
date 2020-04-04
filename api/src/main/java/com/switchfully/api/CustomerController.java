@@ -2,7 +2,7 @@ package com.switchfully.api;
 
 
 import com.switchfully.domain.repositiories.CustomerRepository;
-import com.switchfully.service.dto.CustomerDto;
+import com.switchfully.service.dto.customerdto.CustomerDto;
 
 import com.switchfully.service.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;

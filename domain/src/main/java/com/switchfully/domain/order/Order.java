@@ -24,7 +24,7 @@ public class Order {
     public double getTotalPriceOfItemGroupList(List<ItemGroup> itemGroupList){
         double totalPrice = 0;
         for (ItemGroup itemGroup: itemGroupList){
-            totalPrice = totalPrice + itemGroup.getPrice();
+            totalPrice += itemGroup.getPrice();
         }
         return totalPrice;
     }

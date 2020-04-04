@@ -1,7 +1,7 @@
 package com.switchfully.service.mapper;
 
 import com.switchfully.domain.item.Item;
-import com.switchfully.service.dto.ItemDto;
+import com.switchfully.service.itemdto.ItemDto;
 import org.springframework.stereotype.Component;
 
 @Component
