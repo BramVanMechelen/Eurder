@@ -7,12 +7,14 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Component
 public class ItemRepository {
 
     private static Map<String, Item> itemRepositoryMap = new LinkedHashMap<>();
 
-    public Item addItem(Item item) {
+    public static Item addItem(Item item) throws IllegalArgumentException {
+        if (item.getName() == null) {
+            throw new IllegalArgumentException("Item cannot be null");
+        }
         itemRepositoryMap.putIfAbsent(item.getName(), item);
         return itemRepositoryMap.get(item.getName());
     }
@@ -21,8 +23,11 @@ public class ItemRepository {
         return itemRepositoryMap;
     }
 
-    public Item getItem(String itemName) {
-        return itemRepositoryMap.get(itemName);
+    public static Item getItem(String itemName) {
+        if (itemRepositoryMap.containsKey(itemName)) {
+            return itemRepositoryMap.get(itemName);
+        } else {
+            throw new IllegalArgumentException("Inventory does not contain item named: " + itemName);
+        }
     }
-
 }
